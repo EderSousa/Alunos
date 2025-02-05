@@ -1,10 +1,15 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./home.style";
 import icons from "../../constants/icons.js"
-
+import Button from "../../components/button/button.jsx";
 
 
 function Home(){
+
+    function Teste(){
+        console.log("Clicou...")
+    }
+
     return <View style={styles.container}>
 
         <Image style={styles.logo} source={icons.logo} />
@@ -17,10 +22,7 @@ function Home(){
 
         </Text>
         
-        <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Acessar</Text>
-        </TouchableOpacity>
-
+        <Button texto="Acessar" estilo="blue" onPress={Teste} />
     </View>
     
     

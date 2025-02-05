@@ -6,10 +6,11 @@ import { COLORS, FONT_SIZE, FONT_FAMILY } from "../../constants/theme.js"
 export const styles = {
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: COLORS.gray,
-        padding: 50
+        paddingTop: 30,
+        paddingLeft: 15,
+        paddingRight: 15,
     },
     titulo: {
         color: COLORS.white,
@@ -23,9 +24,11 @@ export const styles = {
         textAlign: "center"
     },
     logo: {
-        width: 120,
-        height: 120
+        width: 60,
+        height: 60
     },
-    
+    list: {
+        width: "100%"
+    }
     
 };

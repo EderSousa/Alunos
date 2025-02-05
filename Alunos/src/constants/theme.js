@@ -3,7 +3,8 @@ const COLORS = {
     gray: "#343942",
     white: "#ffffff",
     red: "E24040",
-    dark_gray: "1D2026"
+    dark_gray: "1D2026",
+    medium_gray: "#2A2F39"
 };
 
 const FONT_FAMILY = {
