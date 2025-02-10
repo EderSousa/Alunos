@@ -5,13 +5,16 @@ import Curso from "../../components/curso/curso.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 
-
 function Cursos(){
 
     const curso = ["Contabilidade", "Eletrônica", "Pintura", "Desenho"];
 
     function ClickCurso(curso){
         console.log("cliclou no curso " + curso);
+    }
+
+    function onChange(texto){
+        console.log(texto)
     }
 
     return <View style={styles.container}>
