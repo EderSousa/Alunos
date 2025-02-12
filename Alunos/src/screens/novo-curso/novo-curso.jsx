@@ -27,7 +27,7 @@ function NovoCurso(){
     />
     
     <View style={styles.form}>
-        <TextBox  placeholder="Nomde do curso..."
+        <TextBox  placeholder="Nome do curso..."
         value="teste"
         onChangeText={onChange}
         />
