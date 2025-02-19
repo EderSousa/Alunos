@@ -14,6 +14,10 @@ export const styles = {
     },
     list: {
         width: "100%"
+    },
+    form: {
+        width: "100%",
+        height: 50
     }
     
 };

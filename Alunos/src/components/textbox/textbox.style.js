@@ -4,7 +4,7 @@ import { COLORS, FONT_FAMILY } from "../../constants/theme.js"
 export const styles = {
     input: {
         flex: 1,
-        backgroundColor: COLORS.dark_gray,
+        backgroundColor: COLORS.medium_gray,
         padding: 10,
         color: COLORS.white,
         borderRadius: 4,

@@ -1,8 +1,11 @@
 import { Text, View,  FlatList } from "react-native";
 import { styles } from "./alunos.style.js"
-import Button from "../../components/button/button.jsx"
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
+import Button from "../../components/button/button.jsx"
+import TextBox from "../../components/textbox/textbox.jsx"
+
+
 
 function Alunos(){
 
@@ -12,15 +15,25 @@ function Alunos(){
         console.log("cliclou no curso " + curso);
     }
 
-    function onChange(texto){
+    function onChangeText(texto){
         console.log(texto)
     }
 
-    return <View style={styles.container}>
+    return <>    
+    
+    
+        <View style={styles.container}>
 
         
         <Titulo icone={icons.group} titulo="Contabilidade"
          subtitulo="Gerencie os alunos desse curso. " />
+
+         <View  style={styles.form}>
+            <TextBox placeholder="Nome do aluno..." 
+                     onChangeText={onChangeText}
+                     //value={} 
+                     />
+         </View >
 
         <FlatList data={alunos} 
             style={styles.list}
@@ -34,6 +47,13 @@ function Alunos(){
 
         <Button texto="Remover curso" estilo="red" />
 
-    </View>
+            
+        </View>
+
+    
+
+
+    </>
+
 }
 export default Alunos;
