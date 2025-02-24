@@ -4,7 +4,7 @@ import { styles } from "./button.style";
 function Button(props){
     return <TouchableOpacity 
     onPress={props.onPress}
-    style={[styles.btn, props.estilo == "red" ? styles.btnRed : styles.btnBlue]}>
+    style={[styles.btn, props.estilo === "red" ? styles.btnRed : styles.btnBlue]}>
     <Text style={styles.btnText}>
         {props.texto}
     </Text>

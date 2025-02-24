@@ -1,9 +1,10 @@
-import { Text, View,  FlatList } from "react-native";
+import { Text, View,  FlatList, TouchableOpacity, Image } from "react-native";
 import { styles } from "./alunos.style.js"
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 import Button from "../../components/button/button.jsx"
 import TextBox from "../../components/textbox/textbox.jsx"
+import Aluno from "../../components/aluno/aluno.jsx";
 
 
 
@@ -19,6 +20,10 @@ function Alunos(){
         console.log(texto)
     }
 
+    function DeleteAluno(aluno){
+        console.log(aluno);
+    }
+
     return <>    
     
     
@@ -29,10 +34,16 @@ function Alunos(){
          subtitulo="Gerencie os alunos desse curso. " />
 
          <View  style={styles.form}>
+           
             <TextBox placeholder="Nome do aluno..." 
                      onChangeText={onChangeText}
                      //value={} 
                      />
+
+            <TouchableOpacity>
+                <Image source={icons.add} style={styles.add} />
+            </TouchableOpacity>
+
          </View >
 
         <FlatList data={alunos} 
@@ -40,7 +51,7 @@ function Alunos(){
             keyExtractor={(curso) => curso}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
-                return <Text>{item}</Text>
+                return <Aluno nome={item} onDelete={DeleteAluno} />
             }}
 
             />

@@ -17,7 +17,17 @@ export const styles = {
     },
     form: {
         width: "100%",
-        height: 50
+        height: 50,
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 20,
+        backgroundColor: COLORS.dark_gray,
+        borderRadius: 4
+    },
+    add: {
+        width: 20,
+        height: 20,
+        margin: 14
     }
-    
-};
+
+}
