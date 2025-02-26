@@ -8,9 +8,10 @@ import Aluno from "../../components/aluno/aluno.jsx";
 
 
 
-function Alunos(){
+function Alunos(props){
 
     const alunos = ["Eder", "Bruno", "Matheus", "Maria"];
+    const curso = props.route.params.nome;
 
     function ClickCurso(curso){
         console.log("cliclou no curso " + curso);
@@ -30,7 +31,7 @@ function Alunos(){
         <View style={styles.container}>
 
         
-        <Titulo icone={icons.group} titulo="Contabilidade"
+        <Titulo icone={icons.group} titulo={curso}
          subtitulo="Gerencie os alunos desse curso. " />
 
          <View  style={styles.form}>

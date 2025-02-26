@@ -5,7 +5,7 @@ import { COLORS, FONT_SIZE, FONT_FAMILY } from "../../constants/theme.js"
 
 export const styles = {
     btn: {
-        width: "100%",
+        width: "100%", 
         margin: 15,
         borderRadius: 4,
         padding: 4,

@@ -4,11 +4,8 @@ import icons from "../../constants/icons.js"
 import Button from "../../components/button/button.jsx";
 
 
-function Home(){
+function Home(props){
 
-    function Teste(){
-        console.log("Clicou...")
-    }
 
     return <View style={styles.container}>
 
@@ -22,7 +19,7 @@ function Home(){
 
         </Text>
         
-        <Button texto="Acessar" estilo="blue" onPress={Teste} />
+        <Button texto="Acessar" estilo="blue" onPress={() => props.navigation.navigate("cursos")} />
     </View>
     
     

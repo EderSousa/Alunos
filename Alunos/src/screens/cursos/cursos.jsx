@@ -5,12 +5,14 @@ import Curso from "../../components/curso/curso.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 
-function Cursos(){
+function Cursos(props){
 
     const curso = ["Contabilidade", "Eletrônica", "Pintura", "Desenho"];
 
     function ClickCurso(curso){
-        console.log("cliclou no curso " + curso);
+        props.navigation.navigate("alunos", {
+            nome: curso
+        });
     }
 
     function onChange(texto){
@@ -33,7 +35,7 @@ function Cursos(){
 
             />
 
-        <Button texto="Cadastrar novo curdo" />
+        <Button texto="Cadastrar novo curdo" onPress={() => props.navigation.navigate("novo-curso")} />
 
     </View>
 }
