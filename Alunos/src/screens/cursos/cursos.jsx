@@ -4,10 +4,14 @@ import Button from "../../components/button/button.jsx"
 import Curso from "../../components/curso/curso.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
+import dbCursos from "../../database/cursos.js"
+import { useState } from "react";
+
+
 
 function Cursos(props){
 
-    const curso = ["Contabilidade", "Eletrônica", "Pintura", "Desenho"];
+    const [cursos, setCursos] = useState([]);
 
     function ClickCurso(curso){
         props.navigation.navigate("alunos", {
@@ -15,8 +19,8 @@ function Cursos(props){
         });
     }
 
-    function onChange(texto){
-        console.log(texto)
+    function ListarCursos(){
+        //dbCursos.Listar();
     }
 
     return <View style={styles.container}>
