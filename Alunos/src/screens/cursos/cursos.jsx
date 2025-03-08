@@ -5,7 +5,8 @@ import Curso from "../../components/curso/curso.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 import dbCursos from "../../database/cursos.js"
-import { useEffect, useState } from "react";
+import { useState, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 
 
@@ -13,19 +14,19 @@ function Cursos(props){
 
     const [cursos, setCursos] = useState([]);
 
-    function ClickCurso(){
-       // props.navigation.navigate("alunos", {
-            
-       /// });
+    function ClickCurso(curso){
+       props.navigation.navigate("alunos", {
+            nome: curso
+        });
     }
 
     async function ListarCursos(){
        setCursos(await dbCursos.Listar());
     }
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         ListarCursos();
-    }, [])
+    }, []));
 
     return <View style={styles.container}>
 
@@ -33,7 +34,7 @@ function Cursos(props){
         <Titulo icone={icons.group} titulo="Cursos"
          subtitulo="Gerencie os cursoso de sua escola. " />
 
-        <FlatList data={curso} 
+        <FlatList data={cursos} 
             style={styles.list}
             keyExtractor={(curso) => curso}
             showsVerticalScrollIndicator={false}

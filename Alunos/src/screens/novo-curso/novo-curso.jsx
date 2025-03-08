@@ -1,22 +1,29 @@
 import {styles} from "./novo-curso.style.js";
 import TextBox from "../../components/textbox/textbox.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import icons from "../../constants/icons.js";
 import Button from "../../components/button/button.jsx";
+import dbCursos from "../../database/cursos.js"
+import { useState } from "react";
 
 
 
+function NovoCurso(props){
 
-function NovoCurso(){
+    const [curso, setCurso] = useState("");
 
-
-    function onChange(){
-
+    function onChange(texto){
+        setCurso(texto);
     }
 
-    function CriarCurso(){
-
+    async function CriarCurso(){
+        try {
+            await dbCursos.Inserir(curso);
+            props.navigation.navigate("cursos");
+        } catch (error) {
+            Alert.alert(error);
+        }
     }
 
     return <View style={styles.container}>
@@ -28,7 +35,7 @@ function NovoCurso(){
     
     <View style={styles.form}>
         <TextBox  placeholder="Nome do curso..."
-        value="teste"
+        value={curso}
         onChangeText={onChange}
         />
     </View>

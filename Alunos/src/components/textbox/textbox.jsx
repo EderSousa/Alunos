@@ -8,7 +8,7 @@ function TextBox(props){
         style={styles.input}  
         placeholder={props.placeholder}  
         placeholderTextColor={styles.placeholder}
-        //value={props.value}
+        value={props.value}
         onChangeText={(texto) => props.onChangeText(texto)}
     
     />

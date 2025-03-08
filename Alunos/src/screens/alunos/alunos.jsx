@@ -1,29 +1,51 @@
-import { Text, View,  FlatList, TouchableOpacity, Image } from "react-native";
+import {  View,  FlatList, TouchableOpacity, Image, Alert } from "react-native";
 import { styles } from "./alunos.style.js"
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 import Button from "../../components/button/button.jsx"
 import TextBox from "../../components/textbox/textbox.jsx"
 import Aluno from "../../components/aluno/aluno.jsx";
+import dbAlunos from "../../database/alunos.js"
+import { useEffect, useState } from "react";
 
 
 
 function Alunos(props){
 
-    const alunos = ["Eder", "Bruno", "Matheus", "Maria"];
+    const [alunos, setAlunos] = useState([]);
+    const [aluno, setAluno] = useState("");
     const curso = props.route.params.nome;
 
-    function ClickCurso(curso){
-        console.log("cliclou no curso " + curso);
+    async function ListarAlunos(){
+        setAlunos(await dbAlunos.Listar(curso));
     }
 
-    function onChangeText(texto){
-        console.log(texto)
+    function onChangeText(text){
+        setAluno(text);
     }
 
-    function DeleteAluno(aluno){
-        console.log(aluno);
+    async function CriarAluno(){
+        try {
+            await dbAlunos.Inserir(curso, aluno);
+            ListarAlunos();
+            setAluno("");
+        } catch (error) {
+            Alert.alert(error);
+        }
     }
+
+    async function DeleteAluno(aluno){
+        try {
+           await dbAlunos.Excluir(curso, aluno); 
+           ListarAlunos();
+        } catch (error) {
+            Alert.alert(error);
+        }
+    }
+
+    useEffect(() => {
+        ListarAlunos();
+    }, []);
 
     return <>    
     
@@ -38,10 +60,10 @@ function Alunos(props){
            
             <TextBox placeholder="Nome do aluno..." 
                      onChangeText={onChangeText}
-                     //value={} 
+                     value={aluno} 
                      />
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={CriarAluno}>
                 <Image source={icons.add} style={styles.add} />
             </TouchableOpacity>
 
