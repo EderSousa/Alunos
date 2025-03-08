@@ -50,7 +50,7 @@ async function Excluir(curso, aluno){
         const alunos = await Listar(curso);
         const novaLista = alunos.filter(item => item != aluno);
 
-        await AsyncStorage.setItem("app-alunos-cursos-", JSON.stringify(novaLista));
+        await AsyncStorage.setItem("app-alunos-cursos-" + curso, JSON.stringify(novaLista));
         
     } catch (error) {
         throw error;

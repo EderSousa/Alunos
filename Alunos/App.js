@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { COLORS } from './src/constants/theme.js';
 import Home from '../Alunos/src/screens/home/home.jsx';
-import Cursos from './src/screens/cursos/cursos.jsx';
+import Cursos from './src//screens/cursos/cursos.jsx';
 import NovoCurso from './src/screens/novo-curso/novo-curso.jsx';
 import Alunos from './src/screens/alunos/alunos.jsx';
 

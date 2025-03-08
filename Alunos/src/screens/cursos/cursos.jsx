@@ -5,7 +5,7 @@ import Curso from "../../components/curso/curso.jsx";
 import Titulo from "../../components/titulo/titulo.jsx";
 import icons from "../../constants/icons.js";
 import dbCursos from "../../database/cursos.js"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -13,15 +13,19 @@ function Cursos(props){
 
     const [cursos, setCursos] = useState([]);
 
-    function ClickCurso(curso){
-        props.navigation.navigate("alunos", {
-            nome: curso
-        });
+    function ClickCurso(){
+       // props.navigation.navigate("alunos", {
+            
+       /// });
     }
 
-    function ListarCursos(){
-        //dbCursos.Listar();
+    async function ListarCursos(){
+       setCursos(await dbCursos.Listar());
     }
+
+    useEffect(() => {
+        ListarCursos();
+    }, [])
 
     return <View style={styles.container}>
 
