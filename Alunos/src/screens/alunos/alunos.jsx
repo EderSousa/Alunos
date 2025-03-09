@@ -6,7 +6,9 @@ import Button from "../../components/button/button.jsx"
 import TextBox from "../../components/textbox/textbox.jsx"
 import Aluno from "../../components/aluno/aluno.jsx";
 import dbAlunos from "../../database/alunos.js"
+import dbCursos from "../../database/cursos.js"
 import { useEffect, useState } from "react";
+import Buttonn from "../../components/button/button.jsx";
 
 
 
@@ -20,8 +22,8 @@ function Alunos(props){
         setAlunos(await dbAlunos.Listar(curso));
     }
 
-    function onChangeText(text){
-        setAluno(text);
+    function onChangeText(texto){
+        setAluno(texto);
     }
 
     async function CriarAluno(){
@@ -43,14 +45,20 @@ function Alunos(props){
         }
     }
 
+    async function DeleteCurso(aluno){
+        try {
+           await dbCursos.Excluir(curso); 
+           props.navigation.navigate("cursos");
+        } catch (error) {
+            Alert.alert(error);
+        }
+    }
+
     useEffect(() => {
         ListarAlunos();
     }, []);
 
-    return <>    
-    
-    
-        <View style={styles.container}>
+    return <View style={styles.container}>
 
         
         <Titulo icone={icons.group} titulo={curso}
@@ -79,15 +87,12 @@ function Alunos(props){
 
             />
 
-        <Button texto="Remover curso" estilo="red" />
+        <Button texto="Remover curso" estilo="red" onPress={DeleteCurso} />
 
             
         </View>
 
-    
 
-
-    </>
 
 }
 export default Alunos;

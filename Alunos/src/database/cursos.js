@@ -21,7 +21,17 @@ async function Inserir(curso){
 
     try {
         const cursos = await Listar();
-        cursos.push(curso);
+
+        // consiste duplicidades
+
+        const resultado = cursos.filter(c => c == curso);
+        if (resultado.length > 0){
+            throw "Esse curso já está cadastrado"
+            return
+        } else {
+            cursos.push(curso);            
+        }
+
 
         await AsyncStorage.setItem("app-alunos-cursos", JSON.stringify(cursos));
         

@@ -44,7 +44,7 @@ function Cursos(props){
 
             />
 
-        <Button texto="Cadastrar novo curdo" onPress={() => props.navigation.navigate("novo-curso")} />
+        <Button texto="Cadastrar novo curso" onPress={() => props.navigation.navigate("novo-curso")} />
 
     </View>
 }

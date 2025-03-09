@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 async function Listar(curso){
     try {
-        const storage = await AsyncStorage.getItem("app-alunos-cursos" + curso);
+        const storage = await AsyncStorage.getItem("app-alunos-cursos-" + curso);
 
         return storage ? JSON.parse(storage) : []
 
@@ -26,7 +26,18 @@ async function Inserir(curso, aluno){
 
     try {
         const alunos = await Listar(curso);
-        alunos.push(aluno);
+
+        const resultado = alunos.filter(a => a == aluno);
+        
+        // consiste duplicidades
+
+        if (resultado.length > 0){
+            throw "Esse aluno já está matrículado nesse curso"
+            return
+        } else {
+            alunos.push(aluno);            
+        }
+        
 
         await AsyncStorage.setItem("app-alunos-cursos-" + curso, JSON.stringify(alunos));
         
